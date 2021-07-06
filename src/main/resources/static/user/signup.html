@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>회원가입 페이지</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+
+<div id="login-form">
+    <div id="login-title">회원가입</div>
+    <form action= "/user/signup" method="post">
+        <div class="login-id-label">닉네임</div>
+        <input type="text" name="username" placeholder="3자 이상, 알파벳 대소문자와 숫자만 가능합니다" class="login-input-box">
+
+        <div class="login-id-label">패스워드</div>
+        <input type="password" name="password" class="login-input-box" placeholder="4자 이상, 닉네임과 같은 값을 포함할 수 없습니다">
+
+        <div class="login-id-label">패스워드 확인</div>
+        <input type="password" name="passwordConfirm" class="login-input-box" placeholder="패스워드를 한번 더 입력해주세요">
+
+
+        <button id="login-id-submit">회원 가입</button>
+    </form>
+</div>
+
+</body>
+</html>

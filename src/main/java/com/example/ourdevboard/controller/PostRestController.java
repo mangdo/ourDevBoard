@@ -11,7 +11,7 @@ import java.util.List;
 
 @RequiredArgsConstructor // final로 선언된 멤버 변수를 자동으로 생성합니다.
 @RestController // JSON으로 데이터를 주고받음을 선언합니다.
-public class PostController {
+public class PostRestController {
     private final PostService postService;
 
     // 게시글 목록 조회
