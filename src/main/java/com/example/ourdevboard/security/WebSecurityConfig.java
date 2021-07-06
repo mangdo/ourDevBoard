@@ -43,13 +43,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/user/login")
                 .loginProcessingUrl("/user/login")
                 .defaultSuccessUrl("/")
+                .failureUrl("/user/login/error")
                 .permitAll()
                 .and()
             .logout()
                 .logoutUrl("/user/logout")
                 .logoutSuccessUrl("/")
                 .invalidateHttpSession(true) // 로그 아웃시 인증정보를 지우하고 세션을 무효화
-                .permitAll();;
+                .permitAll();
 
         http.cors().and();
         http.csrf().disable();

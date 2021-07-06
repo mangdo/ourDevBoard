@@ -7,6 +7,14 @@
     <link rel="stylesheet" type="text/css" href="/css/style.css">
     <meta charset="UTF-8">
     <title>로그인 페이지</title>
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        let loginError = /*[[${loginError}]]*/ null;
+        if (loginError != null) {
+            alert("닉네임 또는 패스워드를 확인해주세요")
+        }
+        /*]]>*/
+    </script>
 </head>
 <body>
 <div id="login-form">
