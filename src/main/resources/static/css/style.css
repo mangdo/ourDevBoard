@@ -355,14 +355,14 @@ button {
 
 #login-form {
     width: 538px;
-    height: 600px;
+    /*height: 600px;*/
     margin: 70px auto 141px auto;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     /*gap: 96px;*/
-    padding: 56px 0 0;
+    padding: 56px 0 56px;
     border-radius: 10px;
     box-shadow: 0 4px 25px 0 rgba(0, 0, 0, 0.15);
     background-color: #ffffff;
@@ -386,7 +386,7 @@ button {
 
 #login-kakao-btn {
     border-width: 0;
-    margin: 96px 0 8px;
+    margin: 50px 0 8px;
     width: 393px;
     height: 62px;
     flex-grow: 0;
@@ -435,7 +435,7 @@ button {
     border-width: 0;
 
     width: 370px !important;
-    height: 45px;
+    height: 40px;
     margin: 15px 0 0;
     border-radius: 5px;
     background-color: #e9ecef;

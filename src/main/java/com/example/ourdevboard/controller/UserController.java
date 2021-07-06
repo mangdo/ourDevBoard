@@ -26,4 +26,11 @@ public class UserController {
         userService.registerUser(requestDto);
         return "redirect:/";
     }
+
+    // 회원 로그인 페이지
+    @GetMapping("/user/login")
+    public void login() {
+
+    }
+
 }

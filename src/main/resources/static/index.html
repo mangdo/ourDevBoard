@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Our Dev Board</title>
@@ -103,8 +103,12 @@
 
         <section class="hero is-success is-halfheight">
             <div class="columns ">
-            <div class = "column is-offset-10 login">로그인 / <a href="/user/signup">회원가입</a></div>
+                <div class = "column is-offset-10 login">
+                    <span th:if="${username}"><span th:text="${username}"></span>님 환영합니다 &nbsp; |&nbsp; <a href="/user/logout">로그아웃</a></span>
+                    <span th:unless="${username}"><a href="/user/login">로그인</a>&nbsp;|&nbsp;<a href="/user/signup">회원가입</a></span>
+                </div>
             </div>
+
             <div class="hero-body center">
 
                 <div class="">
@@ -112,6 +116,7 @@
                         Our Dev Board
                     </p>
                 </div>
+
             </div>
         </section>
 

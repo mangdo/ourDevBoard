@@ -20,7 +20,7 @@ public class User extends Timestamped {
     private String username;
 
     @Column(nullable = false)
-    private String passwordEncode;
+    private String password;
 
     //@Column(nullable = false)
     //private String password;
@@ -30,7 +30,7 @@ public class User extends Timestamped {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(); //암호화
 
         this.username = signupRequestDto.getUsername();
-        this.passwordEncode = encoder.encode(signupRequestDto.getPassword());
+        this.password = encoder.encode(signupRequestDto.getPassword());
         // this.password = memberRequestDto.getPassword();
     }
 }
