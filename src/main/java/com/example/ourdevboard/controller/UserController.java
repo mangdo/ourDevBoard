@@ -38,4 +38,10 @@ public class UserController {
         return "user/login";
     }
 
+    @GetMapping("/login/forbidden")
+    public String forbidden(Model model) {
+        model.addAttribute("forbidden", true);
+        return "user/login";
+    }
+
 }

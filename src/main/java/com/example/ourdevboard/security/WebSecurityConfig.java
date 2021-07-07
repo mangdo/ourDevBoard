@@ -36,11 +36,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 //.antMatchers("/detail*").hasAnyRole()
-                .antMatchers("/", "/api/posts").permitAll()
+                .antMatchers("/", "/api/posts", "/api/posts/*", "/posts/detail*", "/user/login/forbidden").permitAll()
+                // 그 외 모든 요청은 인증과정 필요, 로그인 페이지로 리다이렉트된다
                 .anyRequest().authenticated()
                 .and()
             .formLogin()
-                .loginPage("/user/login")
+                .loginPage("/user/login/forbidden")
                 .loginProcessingUrl("/user/login")
                 .defaultSuccessUrl("/")
                 .failureUrl("/user/login/error")
