@@ -1,11 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>회원가입 페이지</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        let signupFail = /*[[${signupFail}]]*/ null;
+        if (signupFail != null) {
+            alert(signupFail)
+        }
+        /*]]>*/
+    </script>
 </head>
 <body>
 

@@ -2,6 +2,7 @@ package com.example.ourdevboard.domain.user;
 
 import com.example.ourdevboard.domain.Timestamped;
 import com.example.ourdevboard.domain.dto.SignupRequestDto;
+import com.example.ourdevboard.util.UserValidate;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -20,17 +21,19 @@ public class User extends Timestamped {
     private String username;
 
     @Column(nullable = false)
-    private String passwordEncode;
+    private String password;
 
     //@Column(nullable = false)
     //private String password;
 
 
     public User(SignupRequestDto signupRequestDto){
+        UserValidate.checkName(signupRequestDto);
+        UserValidate.checkPassword(signupRequestDto);
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(); //암호화
 
         this.username = signupRequestDto.getUsername();
-        this.passwordEncode = encoder.encode(signupRequestDto.getPassword());
+        this.password = encoder.encode(signupRequestDto.getPassword());
         // this.password = memberRequestDto.getPassword();
     }
 }
