@@ -1,7 +1,7 @@
 package com.example.ourdevboard.domain.post;
 
 import com.example.ourdevboard.domain.Timestamped;
-import com.example.ourdevboard.domain.dto.PostRequestDto;
+import com.example.ourdevboard.domain.dto.ReplyRequestDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -10,8 +10,7 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor
 @Entity
-public class Post extends Timestamped {
-
+public class Reply  extends Timestamped {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -19,20 +18,19 @@ public class Post extends Timestamped {
     @Column(nullable = false)
     private String writer;
 
-    @Column(nullable = false)
-    private String title;
-
     @Column(columnDefinition = "TEXT", nullable = false)
     private String content;
 
-    public Post(PostRequestDto requestDto){
-        this.title = requestDto.getTitle();
+    @Column(nullable = false)
+    private Long postId;
+
+    public Reply(ReplyRequestDto requestDto){
         this.content = requestDto.getContent();
         this.writer = requestDto.getWriter();
+        this.postId = requestDto.getPostId();
     }
 
-    public void update(PostRequestDto requestDto) {
-        this.title = requestDto.getTitle();
+    public void update(ReplyRequestDto requestDto){
         this.content = requestDto.getContent();
     }
 }
