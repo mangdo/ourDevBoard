@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
@@ -27,9 +28,16 @@ public class ReplyService {
 
     // Delete Reply
     @Transactional
-    public void delete(Long id){
-        replyRepository.deleteById(id);
+    public boolean delete(Long replyId, String userId){
+        Reply reply = replyRepository.findById(replyId).orElseThrow(
+                ()->new IllegalArgumentException("해당 게시물이 없습니다. id = "+replyId));
+        if (reply.getWriter().equals(userId)) {
+            replyRepository.deleteById(replyId);
+            return true;
+        }
+        return false;
     }
+
 
     // Read Reply List
     @Transactional(readOnly=true)
