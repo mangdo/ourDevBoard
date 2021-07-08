@@ -37,16 +37,14 @@ public class ReplyRestController {
     // 특정 댓글 삭제
     @DeleteMapping("/{id}")
     public Long deletePost(@PathVariable Long id, @AuthenticationPrincipal UserDetailsImpl userDetails){
-        if(replyService.delete(id, userDetails.getUsername())){
-            return id;
-        }
-        return -1L;
+        replyService.delete(id, userDetails.getUsername());
+        return id;
     }
 
     // 특정 댓글 수정
     @PutMapping("/{id}")
-    public Long updatePost(@PathVariable Long id, @RequestBody ReplyRequestDto requestDto) {
-        return replyService.update(id, requestDto);
+    public Long updatePost(@PathVariable Long id, @RequestBody ReplyRequestDto requestDto, @AuthenticationPrincipal UserDetailsImpl userDetails) {
+        return replyService.update(id, requestDto, userDetails.getUsername());
     }
 
 }

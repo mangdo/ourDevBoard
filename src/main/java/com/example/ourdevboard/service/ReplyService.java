@@ -1,9 +1,7 @@
 package com.example.ourdevboard.service;
 
-import com.example.ourdevboard.domain.dto.PostRequestDto;
 import com.example.ourdevboard.domain.dto.ReplyRequestDto;
 import com.example.ourdevboard.domain.dto.ReplyResponseDto;
-import com.example.ourdevboard.domain.post.Post;
 import com.example.ourdevboard.domain.post.Reply;
 import com.example.ourdevboard.domain.post.ReplyRepository;
 import lombok.RequiredArgsConstructor;
@@ -11,7 +9,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
@@ -28,14 +25,14 @@ public class ReplyService {
 
     // Delete Reply
     @Transactional
-    public boolean delete(Long replyId, String userId){
+    public void delete(Long replyId, String userId){
         Reply reply = replyRepository.findById(replyId).orElseThrow(
                 ()->new IllegalArgumentException("해당 게시물이 없습니다. id = "+replyId));
-        if (reply.getWriter().equals(userId)) {
-            replyRepository.deleteById(replyId);
-            return true;
+
+        if (!reply.getWriter().equals(userId)) {
+            throw new IllegalArgumentException("자신이 쓴 댓글만 삭제할 수 있습니다.");
         }
-        return false;
+        replyRepository.deleteById(replyId);
     }
 
 
@@ -49,6 +46,7 @@ public class ReplyService {
     }
 
     // Read One Post By Id
+    @Transactional(readOnly=true)
     public ReplyResponseDto findById(Long id){
         Reply reply = replyRepository.findById(id).orElseThrow(
                 ()->new IllegalArgumentException("해당 댓글이 없습니다. id = "+id));
@@ -56,10 +54,13 @@ public class ReplyService {
     }
 
     // Update Reply By Id
-    @Transactional(readOnly=true)
-    public Long update (Long id, ReplyRequestDto requestDto){
+    @Transactional
+    public Long update (Long id, ReplyRequestDto requestDto, String userId){
         Reply reply = replyRepository.findById(id).orElseThrow(
                 ()->new IllegalArgumentException("해당 댓글이 없습니다. id = "+id));
+        if (!reply.getWriter().equals(userId)) {
+            throw new IllegalArgumentException("자신이 쓴 댓글만 수정할 수 있습니다.");
+        }
         reply.update(requestDto);
         return id;
     }
