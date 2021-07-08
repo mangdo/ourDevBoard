@@ -44,4 +44,13 @@ public class UserController {
         return "user/login";
     }
 
+    // 카카오 로그인 성공시
+    @GetMapping("/kakao/callback")
+    public String kakaoLogin(String code) {
+        // authorizedCode: 카카오 서버로부터 받은 인가 코드
+        userService.kakaoLogin(code);
+
+        return "redirect:/";
+    }
+
 }

@@ -1,6 +1,7 @@
 package com.example.ourdevboard.domain.user;
 
 import com.example.ourdevboard.domain.Timestamped;
+import com.example.ourdevboard.domain.dto.KakaoSignupRequestDto;
 import com.example.ourdevboard.domain.dto.SignupRequestDto;
 import com.example.ourdevboard.util.UserValidate;
 import lombok.Getter;
@@ -23,10 +24,10 @@ public class User extends Timestamped {
     @Column(nullable = false)
     private String password;
 
-    //@Column(nullable = false)
-    //private String password;
+    @Column(nullable = true)
+    private Long kakaoId;
 
-
+    // 일반 유저 생성
     public User(SignupRequestDto signupRequestDto){
         UserValidate.checkName(signupRequestDto);
         UserValidate.checkPassword(signupRequestDto);
@@ -34,6 +35,17 @@ public class User extends Timestamped {
 
         this.username = signupRequestDto.getUsername();
         this.password = encoder.encode(signupRequestDto.getPassword());
-        // this.password = memberRequestDto.getPassword();
+        this.kakaoId = null;
     }
+
+    // 카카오로그인 유저 생성
+    public User(KakaoSignupRequestDto kakaoSignupRequestDto){
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(); //암호화
+
+        this.username = kakaoSignupRequestDto.getUsername();
+        this.password = encoder.encode(kakaoSignupRequestDto.getPassword());
+        this.kakaoId = kakaoSignupRequestDto.getKakaoId();
+    }
+
+
 }
