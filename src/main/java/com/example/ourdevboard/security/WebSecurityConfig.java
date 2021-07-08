@@ -38,7 +38,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 //.antMatchers("/detail*").hasAnyRole()
                 .antMatchers("/", "/api/posts", "/api/posts/*", "/posts/detail*", "/user/login/forbidden",
-                        "/user/signup", "/user/login", "/user/kakao/callback").permitAll()
+                        "/user/signup", "/user/login", "/api/reply/post/*","/user/kakao/callback").permitAll()
                 // 그 외 모든 요청은 인증과정 필요, 로그인 페이지로 리다이렉트된다
                 .anyRequest().authenticated()
                 .and()
@@ -58,11 +58,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.cors().and();
         http.csrf().disable();
     }
-
     @Bean
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
-
 }

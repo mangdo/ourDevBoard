@@ -31,7 +31,8 @@
 
 <th:block sec:authorize="isAuthenticated()">
     <script>
-        alert("이미 로그인한 사용자입니다.")
+        alert("이미 로그인한 사용자입니다.");
+        window.location.replace("/");
     </script>
 </th:block>
 
