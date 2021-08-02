@@ -13,6 +13,6 @@ public class SignupExceptionHandler {
 
         model.addAttribute("signupFail", ex.getMessage());
 
-        return "/user/signup";
+        return "user/signup";
     }
 }
