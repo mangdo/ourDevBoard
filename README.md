@@ -1,5 +1,5 @@
 # Our DevBoard :computer:
-> http://startspring.shop/ <br>
+> ~~[http://startspring.shop/](https://github.com/mangdo/ourDevBoard) (AWS 비용문제로 현재 서버를 내린 상태입니다.)~~<br>
 > 개발 관련 글들을 모아서 관리하는 게시판입니다. <br>
 > [MyDevBoard](https://github.com/mangdo/myDevBoard) 프로젝트에서 기능을 추가해서 만들었습니다.
 <br>
@@ -29,7 +29,18 @@
 - AWS EC2(Ubuntu 18.04 LTS)
 - AWS RDS(MySQL 8.0)
 
-## 3. 주요 기능
+<br>
+
+## 3. 실행 화면
+
+<img src="https://user-images.githubusercontent.com/70243735/132234036-1b1aeca3-9f8b-4492-b39f-40cb033357b3.gif">
+
+
+자세한 영상 : https://youtu.be/Rja06xY4mtU
+
+<br>
+
+## 4. 주요 기능
 - API 설계 : [WIKI](https://github.com/mangdo/ourDevBoard/wiki/API-%EC%84%A4%EA%B3%84-%F0%9F%94%A8)에서 확인
 - 요구사항 명세 : [WIKI](https://github.com/mangdo/ourDevBoard/wiki/%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD-%EB%AA%85%EC%84%B8-%F0%9F%94%A8)에서 확인
 #### **1. 회원가입**<br>
