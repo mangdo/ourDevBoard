@@ -1,5 +1,5 @@
 # Our DevBoard :computer:
-> ~~[http://startspring.shop/](https://github.com/mangdo/ourDevBoard) (AWS 비용문제로 현재 서버를 내린 상태입니다.)~~<br>
+> ~~[http://startspring.shop/](https://github.com/mangdo/ourDevBoard)~~ (AWS 비용문제로 현재 서버를 내린 상태입니다.)<br>
 > 개발 관련 글들을 모아서 관리하는 게시판입니다. <br>
 > [MyDevBoard](https://github.com/mangdo/myDevBoard) 프로젝트에서 기능을 추가해서 만들었습니다.
 <br>
